@@ -22,7 +22,7 @@ import {
   AdminRoute,
   AuthenticatedUser,
   ProtectedRoute,
-} from "./components/Protectedroutes";
+} from "./components/ProtectedRoute";
 import PurchaseCourseProtectedRoute from "./components/PurchaseCourseProtectedRoute";
 import { ThemeProvider } from "./components/ThemeProvider";
 
