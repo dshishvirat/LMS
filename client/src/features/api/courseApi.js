@@ -1,7 +1,7 @@
 import CreateLecture from "@/pages/admin/lecture/CreateLecture";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const COURSE_API = "http://localhost:5000/api/v1/course";
+const COURSE_API = "https://lms-backend-3ei6.onrender.com/api/v1/course";
 
 export const courseApi = createApi({
   reducerPath: "courseApi",
