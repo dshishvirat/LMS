@@ -21,10 +21,21 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.json());
 app.use(cookieParser())
+
+// app.use(cors({
+//     origin:"lms-seven-ebon-93.vercel.app",
+//     credentials:true
+// }))
+
+
 app.use(cors({
-    origin:"lms-seven-ebon-93.vercel.app",
-    credentials:true
-}))
+    origin: [
+        "http://localhost:5173",
+        "https://lms-seven-ebon-93.vercel.app"
+    ],
+    credentials: true
+}));
+
 
 // apis
 app.use("/api/v1/media",mediaRoute)
