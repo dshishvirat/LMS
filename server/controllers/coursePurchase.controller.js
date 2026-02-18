@@ -15,7 +15,11 @@ export const createCheckoutSession = async (req, res) => {
 
     if (!course) return res.status(404).json({ message: "Course not found" });
 
-    const newPerchase = new CoursePurchase({
+    if (!course.isPublished) return res.status(400).json({ message: "Course is not published" });
+
+    if (!course.coursePrice || course.coursePrice <= 0) return res.status(400).json({ message: "Course price is not set or invalid" });
+
+    const newPurchase = new CoursePurchase({
       courseId,
       userId,
       amount: course.coursePrice,
@@ -30,7 +34,7 @@ export const createCheckoutSession = async (req, res) => {
             currency: "inr",
             product_data: {
               name: course.courseTitle,
-              images: [course.courseThumbnail],
+              images: course.courseThumbnail ? [course.courseThumbnail] : [],
             },
             unit_amount: course.coursePrice * 100,
           },
@@ -55,9 +59,9 @@ export const createCheckoutSession = async (req, res) => {
         .json({ success: false, message: "Error while creating session" });
     }
 
-    newPerchase.paymentId = session.id;
+    newPurchase.paymentId = session.id;
 
-    await newPerchase.save();
+    await newPurchase.save();
 
     return res.status(200).json({
       success: true,
