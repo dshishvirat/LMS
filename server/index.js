@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 app.use(cors({
-    origin:"lms-seven-ebon-93.vercel.app",
+    origin:"https://lms-seven-ebon-93.vercel.app",
     credentials:true
 }))
 
