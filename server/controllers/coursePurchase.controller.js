@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import mongoose from "mongoose";
 import { Course } from "../models/course.model.js";
 import { CoursePurchase } from "../models/coursePurchase.model.js";
 import { Lecture } from "../models/lecture.model.js";
@@ -10,6 +11,10 @@ export const createCheckoutSession = async (req, res) => {
   try {
     const userId = req.id;
     const { courseId } = req.body;
+
+    if (!courseId) return res.status(400).json({ message: "Course ID is required" });
+
+    if (!mongoose.Types.ObjectId.isValid(courseId)) return res.status(400).json({ message: "Invalid course ID" });
 
     const course = await Course.findById(courseId);
 
