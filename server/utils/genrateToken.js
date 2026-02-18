@@ -10,7 +10,8 @@ export const genrateToken =(res,user,message)=>{
    .status(200)
    .cookie("token",token, {
     httpOnly:true,
-     sameSite:'strict',
+     sameSite:'none',
+     secure:true,
      maxAge: 30 * 24 * 60 * 60 * 1000
     }).json({
         success:true,
