@@ -15,6 +15,9 @@ import { toast } from "sonner";
 const CourseProgress = () => {
   const params = useParams();
   const courseId = params.courseId;
+
+  if (!courseId) return <p>Invalid course ID</p>;
+
   const { data, isLoading, isError, refetch } =
     useGetCourseProgressQuery(courseId);
 
