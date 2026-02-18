@@ -44,6 +44,7 @@ const CourseProgress = () => {
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Failed to load course details</p>;
+  if (!data || !data.data) return <p>Failed to load course details</p>;
 
   console.log(data);
 
