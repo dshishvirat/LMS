@@ -7,6 +7,7 @@ const USER_API = "https://lms-backend-3ei6.onrender.com/api/v1/user/";
 
 export const authApi = createApi({
   reducerPath: "authApi",
+  tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
     baseUrl: USER_API,
     credentials: "include",
@@ -57,6 +58,7 @@ export const authApi = createApi({
         url: "profile",
         method: "GET",
       }),
+      providesTags: ['User'],
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
