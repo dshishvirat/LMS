@@ -19,6 +19,8 @@ export const createCheckoutSession = async (req, res) => {
 
     if (!course.coursePrice || course.coursePrice <= 0) return res.status(400).json({ message: "Course price is not set or invalid" });
 
+    console.log("Creating Stripe session for course:", courseId, "price:", course.coursePrice);
+
     const newPurchase = new CoursePurchase({
       courseId,
       userId,
