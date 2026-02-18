@@ -49,8 +49,8 @@ export const createCheckoutSession = async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `lms-seven-ebon-93.vercel.app/course-progress/${courseId}`,
-      cancel_url: `lms-seven-ebon-93.vercel.app/course-detail/${courseId}`,
+      success_url: `https://lms-seven-ebon-93.vercel.app/course-progress/${courseId}`,
+      cancel_url: `https://lms-seven-ebon-93.vercel.app/course-detail/${courseId}`,
       metadata: {
         courseId: courseId,
         userId: userId,
