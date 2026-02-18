@@ -4,7 +4,6 @@ const COURSE_PURCHASE_API = "https://lms-backend-3ei6.onrender.com/api/v1/purcha
 
 export const purchaseApi = createApi({
   reducerPath: "purchaseApi",
-  tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
     baseUrl: COURSE_PURCHASE_API,
     credentials: "include",
@@ -17,7 +16,6 @@ export const purchaseApi = createApi({
         method: "POST",
         body: { courseId },
       }),
-      invalidatesTags: ['User'],
     }),
 
     getCourseDetailWithStatus: builder.query({
